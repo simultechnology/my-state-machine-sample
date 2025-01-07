@@ -11,7 +11,13 @@ public class Main {
         
         System.out.println("\n=== 25セント投入 ===");
         gumballMachine.insertQuarter();
-        
+
+        System.out.println("\n=== 25セントを取り出す ===");
+        gumballMachine.ejectQuarter();
+
+        System.out.println("\n=== もう一度25セント投入 ===");
+        gumballMachine.insertQuarter();
+
         System.out.println("\n=== ハンドルを回す ===");
         gumballMachine.turnCrank();
         

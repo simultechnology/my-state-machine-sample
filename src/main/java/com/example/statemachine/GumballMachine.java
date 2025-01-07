@@ -30,6 +30,24 @@ public class GumballMachine {
                 break;
         }
     }
+
+    public void ejectQuarter() {
+        switch (currentState) {
+            case HAS_QUARTER:
+                System.out.println("25セントを返却します");
+                currentState = VendingMachineState.NO_QUARTER;
+                break;
+            case NO_QUARTER:
+                System.out.println("25セントが投入されていません");
+                break;
+            case GUMBALL_SOLD:
+                System.out.println("すでにハンドルを回しています");
+                break;
+            case NO_GUMBALL:
+                System.out.println("25セントが投入されていません");
+                break;
+        }
+    }
     
     public void turnCrank() {
         switch (currentState) {
