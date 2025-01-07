@@ -2,37 +2,37 @@ package com.example.statemachine;
 
 public class Main {
     public static void main(String[] args) {
-        // 5個のガムボールを持つ販売機を作成
+        // Create a gumball machine with 5 gumballs
         GumballMachine gumballMachine = new GumballMachine(5);
         
-        System.out.println("=== 初期状態 ===");
-        System.out.println("ガムボールの数: " + gumballMachine.getGumballCount());
-        System.out.println("現在の状態: " + gumballMachine.getState());
+        System.out.println("=== Initial State ===");
+        System.out.println("Gumball count: " + gumballMachine.getGumballCount());
+        System.out.println("Current state: " + gumballMachine.getState());
         
-        System.out.println("\n=== 25セント投入 ===");
+        System.out.println("\n=== Insert Quarter ===");
         gumballMachine.insertQuarter();
-
-        System.out.println("\n=== 25セントを取り出す ===");
+        
+        System.out.println("\n=== Eject Quarter ===");
         gumballMachine.ejectQuarter();
-
-        System.out.println("\n=== もう一度25セント投入 ===");
-        gumballMachine.insertQuarter();
-
-        System.out.println("\n=== ハンドルを回す ===");
-        gumballMachine.turnCrank();
         
-        System.out.println("\n=== 現在の状態 ===");
-        System.out.println("ガムボールの数: " + gumballMachine.getGumballCount());
-        System.out.println("現在の状態: " + gumballMachine.getState());
-        
-        // さらにいくつかの操作を試す
-        System.out.println("\n=== 25セントを投入せずにハンドルを回す ===");
-        gumballMachine.turnCrank();
-        
-        System.out.println("\n=== 25セント投入 ===");
+        System.out.println("\n=== Insert Quarter Again ===");
         gumballMachine.insertQuarter();
         
-        System.out.println("\n=== もう一度25セント投入 ===");
+        System.out.println("\n=== Turn Crank ===");
+        gumballMachine.turnCrank();
+        
+        System.out.println("\n=== Current State ===");
+        System.out.println("Gumball count: " + gumballMachine.getGumballCount());
+        System.out.println("Current state: " + gumballMachine.getState());
+        
+        // Try additional operations
+        System.out.println("\n=== Try to Turn Crank Without Quarter ===");
+        gumballMachine.turnCrank();
+        
+        System.out.println("\n=== Insert Quarter ===");
+        gumballMachine.insertQuarter();
+        
+        System.out.println("\n=== Try to Insert Quarter Again ===");
         gumballMachine.insertQuarter();
     }
 }

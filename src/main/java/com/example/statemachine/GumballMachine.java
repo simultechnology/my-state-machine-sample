@@ -17,16 +17,16 @@ public class GumballMachine {
         switch (currentState) {
             case NO_QUARTER:
                 currentState = VendingMachineState.HAS_QUARTER;
-                System.out.println("25セントを受け取りました");
+                System.out.println("Quarter accepted");
                 break;
             case HAS_QUARTER:
-                System.out.println("すでに25セントが投入されています");
+                System.out.println("Quarter already inserted");
                 break;
             case NO_GUMBALL:
-                System.out.println("ガムボールがありません。25セントを返却します");
+                System.out.println("No gumballs available. Returning quarter");
                 break;
             case GUMBALL_SOLD:
-                System.out.println("お待ちください。ガムボールを出しています");
+                System.out.println("Please wait, dispensing gumball");
                 break;
         }
     }
@@ -34,17 +34,17 @@ public class GumballMachine {
     public void ejectQuarter() {
         switch (currentState) {
             case HAS_QUARTER:
-                System.out.println("25セントを返却します");
+                System.out.println("Quarter returned");
                 currentState = VendingMachineState.NO_QUARTER;
                 break;
             case NO_QUARTER:
-                System.out.println("25セントが投入されていません");
+                System.out.println("No quarter to return");
                 break;
             case GUMBALL_SOLD:
-                System.out.println("すでにハンドルを回しています");
+                System.out.println("Crank already turned");
                 break;
             case NO_GUMBALL:
-                System.out.println("25セントが投入されていません");
+                System.out.println("No quarter to return");
                 break;
         }
     }
@@ -52,18 +52,18 @@ public class GumballMachine {
     public void turnCrank() {
         switch (currentState) {
             case HAS_QUARTER:
-                System.out.println("ハンドルを回しました");
+                System.out.println("Crank turned");
                 currentState = VendingMachineState.GUMBALL_SOLD;
                 dispense();
                 break;
             case NO_QUARTER:
-                System.out.println("25セントを投入してください");
+                System.out.println("Please insert a quarter first");
                 break;
             case NO_GUMBALL:
-                System.out.println("ガムボールがありません");
+                System.out.println("No gumballs available");
                 break;
             case GUMBALL_SOLD:
-                System.out.println("2回回してもガムボールは出ません");
+                System.out.println("Turning twice doesn't give you another gumball");
                 break;
         }
     }
@@ -71,17 +71,17 @@ public class GumballMachine {
     private void dispense() {
         switch (currentState) {
             case GUMBALL_SOLD:
-                System.out.println("ガムボールが出ます");
+                System.out.println("Dispensing gumball");
                 gumballCount--;
                 if (gumballCount == 0) {
-                    System.out.println("ガムボールがなくなりました");
+                    System.out.println("Out of gumballs");
                     currentState = VendingMachineState.NO_GUMBALL;
                 } else {
                     currentState = VendingMachineState.NO_QUARTER;
                 }
                 break;
             default:
-                System.out.println("先に25セントを投入してください");
+                System.out.println("Please insert quarter first");
                 break;
         }
     }
