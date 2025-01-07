@@ -100,4 +100,32 @@ public class GumballMachine {
     public int getGumballCount() {
         return gumballCount;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        result.append("Inventory: ").append(gumballCount).append(" gumball");
+        if (gumballCount != 1) {
+            result.append("s");
+        }
+        result.append("\n");
+
+        result.append("Machine is ");
+        switch (currentState) {
+            case NO_QUARTER:
+                result.append("waiting for quarter");
+                break;
+            case HAS_QUARTER:
+                result.append("waiting for crank to be turned");
+                break;
+            case GUMBALL_SOLD:
+                result.append("delivering a gumball");
+                break;
+            case NO_GUMBALL:
+                result.append("out of gumballs");
+                break;
+        }
+
+        return result.toString();
+    }
 }

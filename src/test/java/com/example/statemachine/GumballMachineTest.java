@@ -124,4 +124,32 @@ class GumballMachineTest {
         gumballMachine.insertQuarter();
         assertEquals(VendingMachineState.HAS_QUARTER, gumballMachine.getState());
     }
+
+    @Test
+    @DisplayName("toString should show correct machine status")
+    void testToString() {
+        // Initial state
+        String expected = "Inventory: 5 gumballs\nMachine is waiting for quarter";
+        assertEquals(expected, gumballMachine.toString());
+
+        // After inserting quarter
+        gumballMachine.insertQuarter();
+        expected = "Inventory: 5 gumballs\nMachine is waiting for crank to be turned";
+        assertEquals(expected, gumballMachine.toString());
+
+        // After turning crank
+        gumballMachine.turnCrank();
+        expected = "Inventory: 4 gumballs\nMachine is waiting for quarter";
+        assertEquals(expected, gumballMachine.toString());
+
+        // Empty machine
+        GumballMachine emptyMachine = new GumballMachine(0);
+        expected = "Inventory: 0 gumballs\nMachine is out of gumballs";
+        assertEquals(expected, emptyMachine.toString());
+
+        // Single gumball (tests plural vs singular)
+        GumballMachine singleGumballMachine = new GumballMachine(1);
+        expected = "Inventory: 1 gumball\nMachine is waiting for quarter";
+        assertEquals(expected, singleGumballMachine.toString());
+    }
 }

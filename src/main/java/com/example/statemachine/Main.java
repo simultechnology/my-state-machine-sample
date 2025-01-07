@@ -4,6 +4,8 @@ public class Main {
     public static void main(String[] args) {
         // Create a gumball machine with 5 gumballs
         GumballMachine gumballMachine = new GumballMachine(5);
+
+        System.out.println(gumballMachine);
         
         System.out.println("=== Initial State ===");
         System.out.println("Gumball count: " + gumballMachine.getGumballCount());
