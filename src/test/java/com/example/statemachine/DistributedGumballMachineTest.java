@@ -36,8 +36,8 @@ class DistributedGumballMachineTest {
     @BeforeEach
     void setUp() {
         machine = new DistributedGumballMachine(redisTemplate, redisson);
-        when(redisTemplate.opsForValue()).thenReturn(valueOps);
-        when(redisson.getLock(anyString())).thenReturn(lock);
+        lenient().when(redisTemplate.opsForValue()).thenReturn(valueOps);
+        lenient().when(redisson.getLock(anyString())).thenReturn(lock);
     }
     
     @Test
