@@ -1,4 +1,4 @@
-package com.simultechnology.statemachine;
+package com.simultechnology.statemachine.classic;
 
 import java.util.Random;
 

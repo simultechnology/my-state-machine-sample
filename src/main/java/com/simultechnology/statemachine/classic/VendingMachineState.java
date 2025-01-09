@@ -1,4 +1,4 @@
-package com.simultechnology.statemachine;
+package com.simultechnology.statemachine.classic;
 
 public enum VendingMachineState {
     NO_GUMBALL,           // ガムボールなし

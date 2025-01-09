@@ -1,4 +1,4 @@
-package com.simultechnology.statemachine;
+package com.simultechnology.statemachine.classic;
 
 public class Main {
     public static void main(String[] args) {
