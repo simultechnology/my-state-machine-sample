@@ -2,6 +2,9 @@
 
 A Java implementation of a State Machine pattern using a Gumball Machine example.
 
+## State Diagram
+![Gumball Machine State Diagram](diagrams/gumball-state-diagram.png)
+
 ## Features
 
 - State machine implementation with 4 states (NO_GUMBALL, NO_QUARTER, HAS_QUARTER, GUMBALL_SOLD)
@@ -9,6 +12,7 @@ A Java implementation of a State Machine pattern using a Gumball Machine example
 - Gumball dispensing mechanism
 - Refill functionality
 - Comprehensive unit tests with JaCoCo coverage reports
+- Winner feature (10% chance to get two gumballs)
 
 ## Requirements
 
@@ -42,13 +46,15 @@ machine.turnCrank();        // Get gumball
 System.out.println(machine); // View machine status
 ```
 
-## State Diagram
+## State Transitions
 
 The machine operates according to the following state transitions:
 
 - NO_QUARTER → HAS_QUARTER (after inserting quarter)
 - HAS_QUARTER → NO_QUARTER (after ejecting quarter)
-- HAS_QUARTER → GUMBALL_SOLD (after turning crank)
+- HAS_QUARTER → GUMBALL_SOLD (after turning crank, 90% chance)
+- HAS_QUARTER → WINNER (after turning crank, 10% chance)
 - GUMBALL_SOLD → NO_QUARTER (after dispensing with gumballs remaining)
 - GUMBALL_SOLD → NO_GUMBALL (after dispensing last gumball)
+- WINNER → NO_QUARTER (after dispensing two gumballs)
 - NO_GUMBALL → NO_QUARTER (after refill)
