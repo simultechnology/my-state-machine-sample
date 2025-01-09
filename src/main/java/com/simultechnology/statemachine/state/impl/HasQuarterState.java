@@ -1,5 +1,7 @@
-package com.simultechnology.statemachine.state;
+package com.simultechnology.statemachine.state.impl;
 
+import com.simultechnology.statemachine.state.GumballMachineV2;
+import com.simultechnology.statemachine.state.State;
 import lombok.RequiredArgsConstructor;
 import java.util.Random;
 
