@@ -1,0 +1,17 @@
+stateDiagram-v2
+    [*] --> NO_QUARTER: Initialize
+    NO_QUARTER --> HAS_QUARTER: Insert Quarter
+    HAS_QUARTER --> NO_QUARTER: Eject Quarter
+    HAS_QUARTER --> GUMBALL_SOLD: Turn Crank [90%]
+    HAS_QUARTER --> WINNER: Turn Crank [10%]
+    GUMBALL_SOLD --> NO_QUARTER: Dispense 1 Gumball\n[gumballs > 0]
+    GUMBALL_SOLD --> NO_GUMBALL: Dispense Last Gumball
+    WINNER --> NO_QUARTER: Dispense 2 Gumballs\n[gumballs > 1]
+    WINNER --> NO_GUMBALL: Dispense Last Gumball\n[gumballs = 1]
+    NO_GUMBALL --> NO_QUARTER: Refill
+    
+    note right of WINNER
+        Lucky customer gets
+        2 gumballs for
+        one quarter!
+    end note

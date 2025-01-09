@@ -1,8 +1,11 @@
 package com.example.statemachine;
 
+import java.util.Random;
+
 public class GumballMachine {
     private VendingMachineState currentState;
     private int gumballCount;
+    private final Random random = new Random();
     
     public GumballMachine(int numberOfGumballs) {
         this.gumballCount = numberOfGumballs;
@@ -28,6 +31,9 @@ public class GumballMachine {
             case GUMBALL_SOLD:
                 System.out.println("Please wait, dispensing gumball");
                 break;
+            case WINNER:
+                System.out.println("Please wait, dispensing gumballs");
+                break;
         }
     }
 
@@ -46,6 +52,9 @@ public class GumballMachine {
             case NO_GUMBALL:
                 System.out.println("No quarter to return");
                 break;
+            case WINNER:
+                System.out.println("Crank already turned");
+                break;
         }
     }
     
@@ -53,7 +62,11 @@ public class GumballMachine {
         switch (currentState) {
             case HAS_QUARTER:
                 System.out.println("Crank turned");
-                currentState = VendingMachineState.GUMBALL_SOLD;
+                if (isWinner()) {
+                    currentState = VendingMachineState.WINNER;
+                } else {
+                    currentState = VendingMachineState.GUMBALL_SOLD;
+                }
                 dispense();
                 break;
             case NO_QUARTER:
@@ -63,21 +76,44 @@ public class GumballMachine {
                 System.out.println("No gumballs available");
                 break;
             case GUMBALL_SOLD:
+            case WINNER:
                 System.out.println("Turning twice doesn't give you another gumball");
                 break;
         }
     }
     
+    private boolean isWinner() {
+        return random.nextInt(10) == 0; // 10%の確率で当たり
+    }
+    
     private void dispense() {
         switch (currentState) {
             case GUMBALL_SOLD:
-                System.out.println("Dispensing gumball");
-                gumballCount--;
-                if (gumballCount == 0) {
-                    System.out.println("Out of gumballs");
+                if (gumballCount > 0) {
+                    System.out.println("Dispensing gumball");
+                    gumballCount--;
+                    if (gumballCount == 0) {
+                        System.out.println("Out of gumballs");
+                        currentState = VendingMachineState.NO_GUMBALL;
+                    } else {
+                        currentState = VendingMachineState.NO_QUARTER;
+                    }
+                }
+                break;
+            case WINNER:
+                if (gumballCount > 1) {
+                    System.out.println("YOU'RE A WINNER! You get two gumballs for your quarter");
+                    gumballCount -= 2;
+                    if (gumballCount == 0) {
+                        System.out.println("Out of gumballs");
+                        currentState = VendingMachineState.NO_GUMBALL;
+                    } else {
+                        currentState = VendingMachineState.NO_QUARTER;
+                    }
+                } else if (gumballCount == 1) {
+                    System.out.println("Sorry, not enough gumballs for a winner. You get one gumball");
+                    gumballCount--;
                     currentState = VendingMachineState.NO_GUMBALL;
-                } else {
-                    currentState = VendingMachineState.NO_QUARTER;
                 }
                 break;
             default:
@@ -100,7 +136,7 @@ public class GumballMachine {
     public int getGumballCount() {
         return gumballCount;
     }
-
+    
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
@@ -120,6 +156,9 @@ public class GumballMachine {
                 break;
             case GUMBALL_SOLD:
                 result.append("delivering a gumball");
+                break;
+            case WINNER:
+                result.append("delivering two gumballs");
                 break;
             case NO_GUMBALL:
                 result.append("out of gumballs");
