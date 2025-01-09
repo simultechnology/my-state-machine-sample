@@ -1,9 +1,8 @@
-package com.example.statemachine.state;
+package com.simultechnology.statemachine.state;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
-import org.mockito.Mockito;
 
 import java.lang.reflect.Field;
 import java.util.Random;

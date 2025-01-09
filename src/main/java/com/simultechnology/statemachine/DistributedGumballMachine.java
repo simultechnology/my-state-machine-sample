@@ -1,4 +1,4 @@
-package com.example.statemachine;
+package com.simultechnology.statemachine;
 
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;

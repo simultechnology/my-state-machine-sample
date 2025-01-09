@@ -1,4 +1,4 @@
-package com.example.statemachine;
+package com.simultechnology.statemachine;
 
 public enum VendingMachineEvent {
     INSERT_QUARTER,       // 25セントを投入する

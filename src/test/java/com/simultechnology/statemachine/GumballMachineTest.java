@@ -1,4 +1,4 @@
-package com.example.statemachine;
+package com.simultechnology.statemachine;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

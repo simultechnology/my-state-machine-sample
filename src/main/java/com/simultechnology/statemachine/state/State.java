@@ -1,4 +1,4 @@
-package com.example.statemachine.state;
+package com.simultechnology.statemachine.state;
 
 public interface State {
     void insertQuarter();
