@@ -5,11 +5,11 @@ import lombok.Getter;
 
 @Getter
 public class GumballMachineV2 {
-    private State noQuarterState;
-    private State hasQuarterState;
-    private State soldState;
-    private State winnerState;
-    private State soldOutState;
+    private final State noQuarterState;
+    private final State hasQuarterState;
+    private final State soldState;
+    private final State winnerState;
+    private final State soldOutState;
     
     private State currentState;
     private int gumballCount = 0;
